@@ -55,6 +55,10 @@ class UbxKeyId(object):
     CFG_TP_PERIOD_LOCK_TP2 = 0x4005000e
     CFG_TP_LEN_LOCK_TP2 = 0x40050010
 
+    CFG_HW_ANT_CFG_VOLTCTRL = 0x10a3002e
+    CFG_HW_ANT_CFG_PWRDOWN_POL = 0x10a30034
+
+
     KEY_INFO = {
         CFG_SIGNAL_GPS_ENA: KeyInfo("CFG-SIGNAL-GPS_ENA"),
         CFG_SIGNAL_GPS_L1CA_ENA: KeyInfo("CFG-SIGNAL-GPS_L1CA_ENA"),
@@ -96,6 +100,9 @@ class UbxKeyId(object):
         CFG_TP_POL_TP2: KeyInfo("CFG-TP-POL_TP2"),
         CFG_TP_PERIOD_LOCK_TP2: KeyInfo("CFG-TP-PERIOD_LOCK_TP2"),
         CFG_TP_LEN_LOCK_TP2: KeyInfo("CFG-TP-LEN_LOCK_TP2"),
+
+        CFG_HW_ANT_CFG_VOLTCTRL: KeyInfo("CFG-HW-ANT_CFG_VOLTCTRL"),
+        CFG_HW_ANT_CFG_PWRDOWN_POL: KeyInfo("CFG-HW-ANT_CFG_PWRDOWN_POL"),
     }
 
     @staticmethod
