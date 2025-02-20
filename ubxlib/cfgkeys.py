@@ -104,6 +104,7 @@ class UbxKeyId(object):
         CFG_RATE_NAV_PRIO: KeyInfo("CFG-RATE-NAV_PRIO"),
 
         CFG_SFCORE_USE_SF: KeyInfo("CFG-SFCORE-USE-SF"),
+        CFG_SFIMU_AUTO_MNTALG_ENA: KeyInfo("CFG-SFIMU-AUTO_MNTALG_ENA"),
         CFG_SFIMU_IMU_MNTALG_YAW: KeyInfo("CFG-SFIMU-IMU_MNTALG_YAW"),
         CFG_SFIMU_IMU_MNTALG_PITCH: KeyInfo("CFG-SFIMU-IMU_MNTALG_PITCH", True),    # Signed value
         CFG_SFIMU_IMU_MNTALG_ROLL: KeyInfo("CFG-SFIMU-IMU_MNTALG_ROLL", True),    # Signed value
