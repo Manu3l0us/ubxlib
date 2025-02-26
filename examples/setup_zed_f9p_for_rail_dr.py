@@ -13,6 +13,7 @@ import logging
 from ubxlib.server_tty import GnssUBlox     # TTY direct backend
 from ubxlib.cfgkeys import UbxKeyId, CfgKeyValues
 from ubxlib.ubx_cfg_valset import UbxCfgValSetAction
+from ubxlib.ubx_cfg_valget import UbxCfgValGetPoll
 
 
 FORMAT = '%(asctime)-15s %(levelname)-8s %(message)s'
@@ -22,8 +23,24 @@ logger = logging.getLogger('ubxlib')
 logger.setLevel(logging.DEBUG)
 
 # Create UBX library, assumes 115'200 bps when using TTY backend
-ubx = GnssUBlox('/dev/ttyS3')
+ubx = GnssUBlox('/dev/ttyS3', baudrate=921600)
 ubx.setup()
+
+poll_signals = UbxCfgValGetPoll([
+    UbxKeyId.CFG_SIGNAL_GPS_ENA,        # Result will be in data0
+    UbxKeyId.CFG_SIGNAL_GPS_L1CA_ENA,
+    UbxKeyId.CFG_SIGNAL_GAL_ENA,
+    UbxKeyId.CFG_SIGNAL_GAL_E1_ENA,
+    UbxKeyId.CFG_SIGNAL_BDS_ENA,
+    UbxKeyId.CFG_SIGNAL_BDS_B1_ENA,
+    UbxKeyId.CFG_SIGNAL_GLO_ENA,
+    UbxKeyId.CFG_SIGNAL_GLO_L1_ENA,
+    UbxKeyId.CFG_SIGNAL_SBAS_ENA,
+    UbxKeyId.CFG_SIGNAL_SBAS_L1CA_ENA        # Result will be in data9
+])
+
+res = ubx.poll(poll_signals)
+print(f'Current GNSS system configuration\n{res}')
 
 # Define configuration,
 #  Set key = value pairs
